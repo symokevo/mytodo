@@ -9,49 +9,29 @@ module.exports = {
         ]
       },
       {
-        test: /\.tsx$/,
+        test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'tslint-loader',
+        loader: 'eslint-loader',
         enforce: 'pre'
       },
       {
-        test: /\.tsx$/,
+        test: /\.js$/,
         exclude: /node_modules/,
         loaders: [
-          'ts-loader'
+          'babel-loader'
         ]
       }
     ]
   },
   plugins: [
     new webpack.LoaderOptionsPlugin({
-      options: {
-        resolve: {},
-        ts: {
-          configFileName: 'tsconfig.json'
-        },
-        tslint: {
-          configuration: require('../tslint.json')
-        }
-      },
+      options: {},
       debug: true
     })
   ],
   devtool: 'source-map',
-  resolve: {
-    extensions: [
-      '.webpack.js',
-      '.web.js',
-      '.js',
-      '.ts',
-      '.tsx'
-    ]
-  },
   externals: {
-    jsdom: 'window',
-    cheerio: 'window',
     'react/lib/ExecutionEnvironment': 'true',
-    'react/lib/ReactContext': 'window',
-    'text-encoding': 'window'
+    'react/lib/ReactContext': 'true'
   }
 };

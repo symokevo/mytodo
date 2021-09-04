@@ -16,9 +16,9 @@ module.exports = {
         ]
       },
       {
-        test: /\.tsx$/,
+        test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'tslint-loader',
+        loader: 'eslint-loader',
         enforce: 'pre'
       },
       {
@@ -31,11 +31,11 @@ module.exports = {
         ]
       },
       {
-        test: /\.tsx$/,
+        test: /\.js$/,
         exclude: /node_modules/,
         loaders: [
           'react-hot-loader',
-          'ts-loader'
+          'babel-loader'
         ]
       }
     ]
@@ -50,14 +50,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.LoaderOptionsPlugin({
       options: {
-        postcss: () => [autoprefixer],
-        resolve: {},
-        ts: {
-          configFileName: 'tsconfig.json'
-        },
-        tslint: {
-          configuration: require('../tslint.json')
-        }
+        postcss: () => [autoprefixer]
       },
       debug: true
     })
@@ -66,15 +59,6 @@ module.exports = {
   output: {
     path: path.join(process.cwd(), conf.paths.tmp),
     filename: 'index.js'
-  },
-  resolve: {
-    extensions: [
-      '.webpack.js',
-      '.web.js',
-      '.js',
-      '.ts',
-      '.tsx'
-    ]
   },
   entry: [
     'webpack/hot/dev-server',

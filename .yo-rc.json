@@ -7,7 +7,7 @@
       "skipLocalCache": true,
       "framework": "react",
       "modules": "webpack",
-      "js": "typescript",
+      "js": "babel",
       "ci": "",
       "css": "scss",
       "resolved": "/home/simon/.npm-packages/lib/node_modules/generator-fountain-webapp/node_modules/generator-fountain-react/generators/app/index.js",
